@@ -70,6 +70,11 @@ public class EzNineGridImageView extends ViewGroup {
         imageViews = new ArrayList<>();
     }
 
+    /**
+     * view 大小
+     * @param widthMeasureSpec
+     * @param heightMeasureSpec
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -110,6 +115,14 @@ public class EzNineGridImageView extends ViewGroup {
         setMeasuredDimension(width, height);
     }
 
+    /**
+     * 定位
+     * @param changed
+     * @param l
+     * @param t
+     * @param r
+     * @param b
+     */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         if (mImageInfo == null) return;

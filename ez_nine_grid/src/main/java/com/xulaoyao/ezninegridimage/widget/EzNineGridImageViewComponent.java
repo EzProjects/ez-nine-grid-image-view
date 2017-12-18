@@ -21,6 +21,8 @@ import android.view.MotionEvent;
  */
 public class EzNineGridImageViewComponent extends AppCompatImageView {
 
+    private Paint mPaint;  //圆角
+    private int radius = 40;
 
     private int moreNum = 0;              //显示更多的数量
     private int maskColor = 0x88000000;   //默认的遮盖颜色
@@ -49,11 +51,27 @@ public class EzNineGridImageViewComponent extends AppCompatImageView {
         textPaint.setAntiAlias(true);                //抗锯齿
         textPaint.setTextSize(textSize);             //设置文字大小
         textPaint.setColor(textColor);               //设置文字颜色
+
+        mPaint = new Paint();
     }
 
+    /**
+     * 绘制 view
+     *
+     * @param canvas
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        //int saveCount = canvas.getSaveCount();
+        //canvas.save();
+        //super.onDraw(canvas);
+        //mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        //RectF rectF = new RectF(0, 0, getWidth(), getHeight());
+        //canvas.drawCircle(radius, radius, radius, mPaint);
+        //canvas.restoreToCount(saveCount);
+
         if (moreNum > 0) {
             canvas.drawColor(maskColor);
             float baseY = getHeight() / 2 - (textPaint.ascent() + textPaint.descent()) / 2;
@@ -141,5 +159,23 @@ public class EzNineGridImageViewComponent extends AppCompatImageView {
         textPaint.setColor(textColor);
         invalidate();
     }
+
+//    private Bitmap getBitmap(Drawable drawable) {
+//        if (drawable instanceof BitmapDrawable) {
+//            return ((BitmapDrawable) drawable).getBitmap();
+//        } else if (drawable instanceof ColorDrawable) {
+//            Rect rect = drawable.getBounds();
+//            int width = rect.right - rect.left;
+//            int height = rect.bottom - rect.top;
+//            int color = ((ColorDrawable) drawable).getColor();
+//            Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+//            Canvas canvas = new Canvas(bitmap);
+//            canvas.drawARGB(Color.alpha(color), Color.red(color), Color.green(color), Color.blue(color));
+//            return bitmap;
+//        } else {
+//            return null;
+//        }
+//    }
+
 
 }
