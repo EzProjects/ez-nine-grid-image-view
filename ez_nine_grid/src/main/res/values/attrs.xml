@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EzNineGridImageView">
+        <attr name="ez_ngiv_singleImageSize" format="dimension"/>
+        <attr name="ez_ngiv_singleImageRatio" format="float"/>
+        <attr name="ez_ngiv_gridSpacing" format="dimension"/>
+        <attr name="ez_ngiv_maxSize" format="integer"/>
+    </declare-styleable>
+</resources>
