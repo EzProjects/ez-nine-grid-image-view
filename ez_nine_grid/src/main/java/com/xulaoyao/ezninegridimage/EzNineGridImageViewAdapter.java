@@ -15,11 +15,11 @@ import java.util.List;
 public class EzNineGridImageViewAdapter implements Serializable {
 
     protected Context mContext;
-    private List<EzImage> imageInfo;
+    private List<EzImage> imageInfoList;
 
-    public EzNineGridImageViewAdapter(Context context, List<EzImage> imageInfo) {
+    public EzNineGridImageViewAdapter(Context context, List<EzImage> imageInfoList) {
         this.mContext = context;
-        this.imageInfo = imageInfo;
+        this.imageInfoList = imageInfoList;
     }
 
     /**
@@ -40,18 +40,18 @@ public class EzNineGridImageViewAdapter implements Serializable {
      * @param context 上下文
      * @return 生成的 ImageView
      */
-    protected ImageView generateImageView(Context context) {
+    protected ImageView createImageView(Context context) {
         EzNineGridImageViewComponent imageView = new EzNineGridImageViewComponent(context);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageResource(R.drawable.ic_default_color);
         return imageView;
     }
 
-    public List<EzImage> getImageInfo() {
-        return imageInfo;
+    public List<EzImage> getImageInfoList() {
+        return imageInfoList;
     }
 
-    public void setImageInfoList(List<EzImage> imageInfo) {
-        this.imageInfo = imageInfo;
+    public void setImageInfoList(List<EzImage> imageInfoList) {
+        this.imageInfoList = imageInfoList;
     }
 }

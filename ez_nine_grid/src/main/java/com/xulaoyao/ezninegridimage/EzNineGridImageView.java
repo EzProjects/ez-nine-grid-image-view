@@ -139,7 +139,7 @@ public class EzNineGridImageView extends ViewGroup {
      */
     public void setAdapter(@NonNull EzNineGridImageViewAdapter adapter) {
         mAdapter = adapter;
-        List<EzImage> imageInfo = adapter.getImageInfo();
+        List<EzImage> imageInfo = adapter.getImageInfoList();
 
         if (imageInfo == null || imageInfo.isEmpty()) {
             setVisibility(GONE);
@@ -188,11 +188,11 @@ public class EzNineGridImageView extends ViewGroup {
             }
         }
         //修改最后一个条目，决定是否显示更多
-        if (adapter.getImageInfo().size() > maxImageSize) {
+        if (adapter.getImageInfoList().size() > maxImageSize) {
             View child = getChildAt(maxImageSize - 1);
             if (child instanceof EzNineGridImageViewComponent) {
                 EzNineGridImageViewComponent imageView = (EzNineGridImageViewComponent) child;
-                imageView.setMoreNum(adapter.getImageInfo().size() - maxImageSize);
+                imageView.setMoreNum(adapter.getImageInfoList().size() - maxImageSize);
             }
         }
         mImageInfo = imageInfo;
@@ -207,11 +207,11 @@ public class EzNineGridImageView extends ViewGroup {
         if (position < imageViews.size()) {
             imageView = imageViews.get(position);
         } else {
-            imageView = mAdapter.generateImageView(getContext());
+            imageView = mAdapter.createImageView(getContext());
             imageView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mAdapter.onImageItemClick(getContext(), EzNineGridImageView.this, position, mAdapter.getImageInfo());
+                    mAdapter.onImageItemClick(getContext(), EzNineGridImageView.this, position, mAdapter.getImageInfoList());
                 }
             });
             imageViews.add(imageView);
