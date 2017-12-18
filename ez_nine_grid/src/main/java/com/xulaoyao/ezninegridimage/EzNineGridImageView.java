@@ -77,14 +77,27 @@ public class EzNineGridImageView extends ViewGroup {
         int height = 0;
         int totalWidth = width - getPaddingLeft() - getPaddingRight();
         if (mImageInfo != null && mImageInfo.size() > 0) {
-            if (mImageInfo.size() == 1) {
+            if (mImageInfo.size() == 1) {   //单张的时候 长宽
+                EzImage ezImage = mImageInfo.get(0);
                 gridWidth = singleImageSize > totalWidth ? totalWidth : singleImageSize;
-                gridHeight = (int) (gridWidth / singleImageRatio);
-                //矫正图片显示区域大小，不允许超过最大显示范围
-                if (gridHeight > singleImageSize) {
-                    float ratio = singleImageSize * 1.0f / gridHeight;
-                    gridWidth = (int) (gridWidth * ratio);
-                    gridHeight = singleImageSize;
+                if (ezImage.getImageViewHeight() > ezImage.getImageViewWidth()) {
+                    gridHeight = ezImage.getImageViewHeight();
+                    if (ezImage.getImageViewWidth() > singleImageSize) {
+                        float ratio = singleImageSize * 1.0f / ezImage.getImageViewWidth();
+                        gridWidth = (int) (ezImage.getImageViewWidth() * ratio);
+                        gridHeight = (int) (ezImage.getImageViewHeight() * ratio);
+                    } else {
+                        gridWidth = ezImage.getImageViewWidth();
+                        gridHeight = ezImage.getImageViewHeight();
+                    }
+                } else {
+                    gridHeight = (int) (gridWidth / singleImageRatio);
+                    //矫正图片显示区域大小，不允许超过最大显示范围
+                    if (gridHeight > singleImageSize) {
+                        float ratio = singleImageSize * 1.0f / gridHeight;
+                        gridWidth = (int) (gridWidth * ratio);
+                        gridHeight = singleImageSize;
+                    }
                 }
             } else {
 //                gridWidth = gridHeight = (totalWidth - gridSpacing * (columnCount - 1)) / columnCount;

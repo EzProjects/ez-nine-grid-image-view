@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     // init image data
-    private String[][] images = new String[][]{{"https://cdn.pixabay.com/photo/2016/06/21/19/57/sommerfest-1471809_960_720.jpg", "720", "960"}
+    private String[][] images = new String[][]{{"http://bpic.ooopic.com/12/75/57/52bOOOPICf6_1024.jpg!/fw/750/quality/90/unsharp/true/compress/true/watermark/url/L2xvZ28ud2F0ZXIudjIucG5n/repeat/true/format/jpg", "1000", "200"}
+            , {"https://cdn.pixabay.com/photo/2016/06/21/19/57/sommerfest-1471809_960_720.jpg", "720", "960"}
             , {"https://cdn.pixabay.com/photo/2017/12/03/17/23/fantasy-2995326_960_720.jpg", "720", "960"}
             , {"http://7xi8d6.com1.z0.glb.clouddn.com/20171212083612_WvLcTr_Screenshot.jpeg", "840", "1000"}
             , {"https://cdn.pixabay.com/photo/2017/12/12/14/20/ballet-3014754_960_720.jpg", "640", "640"}
@@ -120,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
             ro.placeholder(R.drawable.ic_default_color);
             ro.error(R.drawable.ic_default_color);
             ro.diskCacheStrategy(DiskCacheStrategy.ALL);
+
+            //ro.transform(new GlideRoundTransform(context, 4));
             Glide.with(context)
                     .load(url)
                     .apply(ro)
@@ -127,4 +130,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
