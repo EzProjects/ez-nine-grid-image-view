@@ -29,6 +29,14 @@ public class EzImage implements Parcelable {
 
     public EzImage(String imageUrl) {
         this.imageUrl = imageUrl;
+        this.thumbnailUrl = imageUrl;
+    }
+
+    public EzImage(String imageUrl, int imageViewHeight, int imageViewWidth) {
+        this.imageUrl = imageUrl;
+        this.thumbnailUrl = imageUrl;
+        this.imageViewHeight = imageViewHeight;
+        this.imageViewWidth = imageViewWidth;
     }
 
     protected EzImage(Parcel in) {
